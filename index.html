@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="Aprova Inteligente: pratique questões, entenda seus erros e revise para concursos de professores.">
+  <title>Aprova Inteligente | Estudos para concursos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Aprova Inteligente - início">
+        <span class="brand-mark">A</span>
+        <span><strong>Aprova</strong><small>INTELIGENTE</small></span>
+      </a>
+
+      <div class="sidebar-label">MENU PRINCIPAL</div>
+      <nav class="nav-list" aria-label="Menu principal">
+        <button class="nav-item active" data-view="study"><span class="nav-icon">▦</span> Painel de estudos</button>
+        <button class="nav-item" data-view="review"><span class="nav-icon">↻</span> Caderno de erros <span class="nav-count" id="reviewNavCount">0</span></button>
+        <button class="nav-item" data-view="progress"><span class="nav-icon">▥</span> Meu desempenho</button>
+      </nav>
+
+      <div class="sidebar-tip">
+        <span class="tip-icon">✦</span>
+        <strong>Um passo de cada vez</strong>
+        <p>Entender um erro é parte do caminho para acertar na próxima.</p>
+      </div>
+      <div class="sidebar-footer">VERSÃO INICIAL · 0.1.0</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">SUA JORNADA COMEÇA AQUI</div>
+          <h1 id="pageTitle">Painel de estudos</h1>
+        </div>
+        <div class="topbar-right">
+          <span class="status-dot"></span>
+          <span class="saved-label" id="savedStatus">Progresso salvo neste dispositivo</span>
+          <div class="avatar" aria-label="Perfil do estudante">E</div>
+        </div>
+      </header>
+
+      <section class="view active" id="studyView">
+        <section class="welcome-panel">
+          <div class="welcome-copy">
+            <span class="pill pill-light">ÁREA DO CONCURSO</span>
+            <h2>Seu próximo passo<br>começa com <em>uma questão.</em></h2>
+            <p>Pratique, entenda suas dificuldades e transforme seus erros em aprendizado.</p>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-circle circle-one"></div>
+            <div class="art-circle circle-two"></div>
+            <div class="book-illustration"><span>✓</span><i></i><i></i><i></i></div>
+            <div class="floating-star">✦</div>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Resumo do desempenho">
+          <article class="stat-card">
+            <div class="stat-icon blue">◎</div>
+            <div><p>Questões respondidas</p><strong id="totalAnswered">0</strong><small>no seu histórico</small></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon green">✓</div>
+            <div><p>Taxa de acerto</p><strong id="accuracyRate">—</strong><small>considerando suas respostas</small></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon orange">↻</div>
+            <div><p>Para revisar</p><strong id="reviewCount">0</strong><small>questões no caderno de erros</small></div>
+          </article>
+        </section>
+
+        <div class="section-heading">
+          <div><h2>Comece a praticar</h2><p>Escolha uma matéria e avance no seu ritmo.</p></div>
+          <span class="question-total" id="questionTotalLabel">8 questões disponíveis</span>
+        </div>
+
+        <section class="practice-layout">
+          <div class="quiz-card">
+            <div class="quiz-topline">
+              <span class="pill" id="subjectPill">PEDAGOGIA</span>
+              <span class="question-counter" id="questionCounter">Questão 1 de 8</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="quizProgress"></div></div>
+            <h3 id="questionText">Carregando questão...</h3>
+            <div class="options-list" id="optionsList"></div>
+            <div class="feedback-panel" id="feedbackPanel" hidden aria-live="polite">
+              <div class="feedback-title" id="feedbackTitle"></div>
+              <p id="feedbackExplanation"></p>
+              <div class="feedback-extra" id="feedbackExtra"></div>
+            </div>
+            <div class="quiz-actions">
+              <button class="button button-quiet" id="skipButton" type="button">Pular por enquanto</button>
+              <button class="button button-primary" id="checkButton" type="button" disabled>Conferir resposta <span>→</span></button>
+              <button class="button button-primary" id="nextButton" type="button" hidden>Próxima questão <span>→</span></button>
+            </div>
+          </div>
+
+          <aside class="study-side">
+            <div class="side-card">
+              <div class="side-card-heading"><span class="mini-icon">✦</span><h3>Seu foco de hoje</h3></div>
+              <p id="focusText">Responda às questões para descobrir quais assuntos merecem mais atenção.</p>
+              <div class="focus-meter"><span id="focusMeter"></span></div>
+              <small id="focusSubtext">Seu plano se ajustará ao seu desempenho.</small>
+            </div>
+            <div class="side-card ai-card">
+              <div class="ai-badge">✧</div>
+              <h3>Aprendizado inteligente</h3>
+              <p>Em breve: recomendações personalizadas e novas questões com apoio de IA.</p>
+              <span class="coming-soon">PREPARADO PARA FUTURAS VERSÕES</span>
+            </div>
+          </aside>
+        </section>
+      </section>
+
+      <section class="view" id="reviewView">
+        <div class="section-heading page-section-heading">
+          <div><h2>Caderno de erros</h2><p>Volte às questões que você errou e tente novamente.</p></div>
+          <span class="question-total" id="reviewHeadingCount">0 questões</span>
+        </div>
+        <div id="reviewContent"></div>
+      </section>
+
+      <section class="view" id="progressView">
+        <div class="section-heading page-section-heading">
+          <div><h2>Seu desempenho</h2><p>Acompanhe seus resultados e descubra onde concentrar seus estudos.</p></div>
+        </div>
+        <div class="progress-summary-grid">
+          <article class="progress-summary-card"><span>Total respondido</span><strong id="progressTotal">0</strong></article>
+          <article class="progress-summary-card"><span>Acertos</span><strong id="progressCorrect">0</strong></article>
+          <article class="progress-summary-card"><span>Erros</span><strong id="progressWrong">0</strong></article>
+        </div>
+        <div class="side-card subject-performance">
+          <h3>Desempenho por matéria</h3>
+          <p class="muted">As porcentagens aparecem conforme você responde às questões.</p>
+          <div id="subjectPerformance"></div>
+        </div>
+        <button class="button button-quiet reset-button" id="resetButton" type="button">Apagar meu progresso deste navegador</button>
+      </section>
+
+      <footer class="app-footer">
+        <span>APROVA INTELIGENTE</span>
+        <span>Aprender com os erros também é progresso.</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="confirm-dialog" id="resetDialog">
+    <form method="dialog">
+      <h2>Apagar seu progresso?</h2>
+      <p>Isso remove as respostas e o caderno de erros salvos neste navegador. Essa ação não pode ser desfeita.</p>
+      <div class="dialog-actions">
+        <button class="button button-quiet" value="cancel">Cancelar</button>
+        <button class="button button-danger" id="confirmResetButton" value="confirm">Apagar progresso</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
