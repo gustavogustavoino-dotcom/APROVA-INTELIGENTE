@@ -1,166 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#172554">
-  <meta name="description" content="Aprova Inteligente: pratique questões, entenda seus erros e revise para concursos de professores.">
-  <title>Aprova Inteligente | Estudos para concursos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Aprova Inteligente</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <a class="brand" href="#" aria-label="Aprova Inteligente - início">
-        <span class="brand-mark">A</span>
-        <span><strong>Aprova</strong><small>INTELIGENTE</small></span>
-      </a>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">AI</span><div><strong>Aprova</strong><small>INTELIGENTE</small></div></div>
+    <nav>
+      <button class="nav-btn active" data-view="inicio">⌂ <span>Visão geral</span></button>
+      <button class="nav-btn" data-view="questoes">▤ <span>Questões</span></button>
+      <button class="nav-btn" data-view="plano">◷ <span>Plano de estudos</span></button>
+      <button class="nav-btn" data-view="erros">↻ <span>Caderno de erros</span></button>
+    </nav>
+    <div class="sidebar-note"><span class="status-dot"></span> Sua jornada começa aqui</div>
+  </aside>
 
-      <div class="sidebar-label">MENU PRINCIPAL</div>
-      <nav class="nav-list" aria-label="Menu principal">
-        <button class="nav-item active" data-view="study"><span class="nav-icon">▦</span> Painel de estudos</button>
-        <button class="nav-item" data-view="review"><span class="nav-icon">↻</span> Caderno de erros <span class="nav-count" id="reviewNavCount">0</span></button>
-        <button class="nav-item" data-view="progress"><span class="nav-icon">▥</span> Meu desempenho</button>
-      </nav>
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">SUA PREPARAÇÃO, COM DIREÇÃO</p><h1 id="page-title">Visão geral</h1></div>
+      <div class="profile"><div class="avatar">E</div><div><strong>Estudante</strong><small>Foco no seu objetivo</small></div></div>
+    </header>
 
-      <div class="sidebar-tip">
-        <span class="tip-icon">✦</span>
-        <strong>Um passo de cada vez</strong>
-        <p>Entender um erro é parte do caminho para acertar na próxima.</p>
+    <section class="view active" id="view-inicio">
+      <div class="hero">
+        <div class="hero-content"><span class="pill">PLATAFORMA DE ESTUDOS</span><h2>Um passo por dia.<br><span>Uma aprovação mais perto.</span></h2><p>Pratique, entenda seus erros e descubra onde concentrar seus estudos.</p><button class="primary" data-go="questoes">Começar a estudar <span>→</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="book">✓</div><span class="spark spark-a">✦</span><span class="spark spark-b">✧</span></div>
       </div>
-      <div class="sidebar-footer">VERSÃO INICIAL · 0.1.0</div>
-    </aside>
-
-    <main class="main-content">
-      <header class="topbar">
-        <div>
-          <div class="eyebrow">SUA JORNADA COMEÇA AQUI</div>
-          <h1 id="pageTitle">Painel de estudos</h1>
-        </div>
-        <div class="topbar-right">
-          <span class="status-dot"></span>
-          <span class="saved-label" id="savedStatus">Progresso salvo neste dispositivo</span>
-          <div class="avatar" aria-label="Perfil do estudante">E</div>
-        </div>
-      </header>
-
-      <section class="view active" id="studyView">
-        <section class="welcome-panel">
-          <div class="welcome-copy">
-            <span class="pill pill-light">ÁREA DO CONCURSO</span>
-            <h2>Seu próximo passo<br>começa com <em>uma questão.</em></h2>
-            <p>Pratique, entenda suas dificuldades e transforme seus erros em aprendizado.</p>
-          </div>
-          <div class="welcome-art" aria-hidden="true">
-            <div class="art-circle circle-one"></div>
-            <div class="art-circle circle-two"></div>
-            <div class="book-illustration"><span>✓</span><i></i><i></i><i></i></div>
-            <div class="floating-star">✦</div>
-          </div>
-        </section>
-
-        <section class="stats-grid" aria-label="Resumo do desempenho">
-          <article class="stat-card">
-            <div class="stat-icon blue">◎</div>
-            <div><p>Questões respondidas</p><strong id="totalAnswered">0</strong><small>no seu histórico</small></div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-icon green">✓</div>
-            <div><p>Taxa de acerto</p><strong id="accuracyRate">—</strong><small>considerando suas respostas</small></div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-icon orange">↻</div>
-            <div><p>Para revisar</p><strong id="reviewCount">0</strong><small>questões no caderno de erros</small></div>
-          </article>
-        </section>
-
-        <div class="section-heading">
-          <div><h2>Comece a praticar</h2><p>Escolha uma matéria e avance no seu ritmo.</p></div>
-          <span class="question-total" id="questionTotalLabel">8 questões disponíveis</span>
-        </div>
-
-        <section class="practice-layout">
-          <div class="quiz-card">
-            <div class="quiz-topline">
-              <span class="pill" id="subjectPill">PEDAGOGIA</span>
-              <span class="question-counter" id="questionCounter">Questão 1 de 8</span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" id="quizProgress"></div></div>
-            <h3 id="questionText">Carregando questão...</h3>
-            <div class="options-list" id="optionsList"></div>
-            <div class="feedback-panel" id="feedbackPanel" hidden aria-live="polite">
-              <div class="feedback-title" id="feedbackTitle"></div>
-              <p id="feedbackExplanation"></p>
-              <div class="feedback-extra" id="feedbackExtra"></div>
-            </div>
-            <div class="quiz-actions">
-              <button class="button button-quiet" id="skipButton" type="button">Pular por enquanto</button>
-              <button class="button button-primary" id="checkButton" type="button" disabled>Conferir resposta <span>→</span></button>
-              <button class="button button-primary" id="nextButton" type="button" hidden>Próxima questão <span>→</span></button>
-            </div>
-          </div>
-
-          <aside class="study-side">
-            <div class="side-card">
-              <div class="side-card-heading"><span class="mini-icon">✦</span><h3>Seu foco de hoje</h3></div>
-              <p id="focusText">Responda às questões para descobrir quais assuntos merecem mais atenção.</p>
-              <div class="focus-meter"><span id="focusMeter"></span></div>
-              <small id="focusSubtext">Seu plano se ajustará ao seu desempenho.</small>
-            </div>
-            <div class="side-card ai-card">
-              <div class="ai-badge">✧</div>
-              <h3>Aprendizado inteligente</h3>
-              <p>Em breve: recomendações personalizadas e novas questões com apoio de IA.</p>
-              <span class="coming-soon">PREPARADO PARA FUTURAS VERSÕES</span>
-            </div>
-          </aside>
-        </section>
-      </section>
-
-      <section class="view" id="reviewView">
-        <div class="section-heading page-section-heading">
-          <div><h2>Caderno de erros</h2><p>Volte às questões que você errou e tente novamente.</p></div>
-          <span class="question-total" id="reviewHeadingCount">0 questões</span>
-        </div>
-        <div id="reviewContent"></div>
-      </section>
-
-      <section class="view" id="progressView">
-        <div class="section-heading page-section-heading">
-          <div><h2>Seu desempenho</h2><p>Acompanhe seus resultados e descubra onde concentrar seus estudos.</p></div>
-        </div>
-        <div class="progress-summary-grid">
-          <article class="progress-summary-card"><span>Total respondido</span><strong id="progressTotal">0</strong></article>
-          <article class="progress-summary-card"><span>Acertos</span><strong id="progressCorrect">0</strong></article>
-          <article class="progress-summary-card"><span>Erros</span><strong id="progressWrong">0</strong></article>
-        </div>
-        <div class="side-card subject-performance">
-          <h3>Desempenho por matéria</h3>
-          <p class="muted">As porcentagens aparecem conforme você responde às questões.</p>
-          <div id="subjectPerformance"></div>
-        </div>
-        <button class="button button-quiet reset-button" id="resetButton" type="button">Apagar meu progresso deste navegador</button>
-      </section>
-
-      <footer class="app-footer">
-        <span>APROVA INTELIGENTE</span>
-        <span>Aprender com os erros também é progresso.</span>
-      </footer>
-    </main>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <dialog class="confirm-dialog" id="resetDialog">
-    <form method="dialog">
-      <h2>Apagar seu progresso?</h2>
-      <p>Isso remove as respostas e o caderno de erros salvos neste navegador. Essa ação não pode ser desfeita.</p>
-      <div class="dialog-actions">
-        <button class="button button-quiet" value="cancel">Cancelar</button>
-        <button class="button button-danger" id="confirmResetButton" value="confirm">Apagar progresso</button>
+      <div class="section-heading"><div><p class="eyebrow">SEU DESEMPENHO</p><h2>Visão do progresso</h2></div><span class="muted">Salvo neste navegador</span></div>
+      <div class="stats">
+        <article class="stat-card"><span class="stat-icon blue">▤</span><span class="stat-label">Respondidas</span><strong id="stat-answered">0</strong><small>Total de tentativas</small></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><span class="stat-label">Taxa de acerto</span><strong id="stat-rate">0%</strong><small>Nas suas respostas</small></article>
+        <article class="stat-card"><span class="stat-icon orange">↻</span><span class="stat-label">Para revisar</span><strong id="stat-errors">0</strong><small>No caderno de erros</small></article>
       </div>
-    </form>
-  </dialog>
+      <div class="two-col">
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">POR DISCIPLINA</p><h3>Onde você está</h3></div></div><div id="subject-progress" class="progress-list"></div></article>
+        <article class="panel recommendation"><div class="rec-icon">✦</div><p class="eyebrow">PRÓXIMA AÇÃO</p><h3 id="recommend-title">Comece por uma questão</h3><p id="recommend-text">Responda algumas questões para receber recomendações com base no seu desempenho.</p><button class="text-btn" data-go="plano">Ver plano de estudos →</button></article>
+      </div>
+    </section>
+
+    <section class="view" id="view-questoes">
+      <div class="section-heading"><div><p class="eyebrow">PRATIQUE E APRENDA</p><h2>Banco de questões</h2><p class="muted">Questões demonstrativas autorais para praticar.</p></div></div>
+      <div class="filters"><label>Disciplina<select id="subject-filter"><option value="Todas">Todas as disciplinas</option><option>Legislação</option><option>Português</option><option>Matemática</option><option>Conhecimentos Pedagógicos</option></select></label><label>Dificuldade<select id="difficulty-filter"><option value="Todas">Todas</option><option>Fácil</option><option>Média</option></select></label><button class="secondary" id="reset-filters">Limpar filtros</button></div>
+      <div id="question-list" class="question-list"></div>
+    </section>
+
+    <section class="view" id="view-plano">
+      <div class="section-heading"><div><p class="eyebrow">ESTUDE COM ESTRATÉGIA</p><h2>Seu plano de estudos</h2><p class="muted">Sugestões iniciais que serão ajustadas conforme suas respostas.</p></div></div>
+      <div class="plan-banner"><div class="plan-symbol">◷</div><div><h3>Plano semanal sugerido</h3><p>Use sessões curtas e revise os assuntos em que tiver mais dificuldade.</p></div></div>
+      <div id="study-plan" class="plan-list"></div>
+      <article class="panel study-tip"><h3>Uma rotina que funciona</h3><p><strong>25 minutos</strong> de estudo + <strong>5 minutos</strong> de pausa. Ao terminar, anote o que aprendeu e retorne às questões erradas para fixar o conteúdo.</p></article>
+    </section>
+
+    <section class="view" id="view-erros">
+      <div class="section-heading"><div><p class="eyebrow">APRENDA COM CADA ERRO</p><h2>Caderno de erros</h2><p class="muted">Questões respondidas incorretamente ficam aqui para revisão.</p></div><button class="secondary" id="clear-errors">Limpar caderno</button></div>
+      <div id="error-list" class="question-list"></div>
+    </section>
+
+    <footer>© <span id="year"></span> Aprova Inteligente <span>•</span> Continue avançando, uma questão por vez.</footer>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
