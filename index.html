@@ -15,6 +15,7 @@
       <button class="nav-btn" data-view="questoes">▤ <span>Questões</span></button>
       <button class="nav-btn" data-view="plano">◷ <span>Plano de estudos</span></button>
       <button class="nav-btn" data-view="erros">↻ <span>Caderno de erros</span></button>
+      <button class="nav-btn" data-view="planos">◇ <span>Planos</span></button>
     </nav>
     <div class="sidebar-note"><span class="status-dot"></span> Sua jornada começa aqui</div>
   </aside>
@@ -58,6 +59,36 @@
     <section class="view" id="view-erros">
       <div class="section-heading"><div><p class="eyebrow">APRENDA COM CADA ERRO</p><h2>Caderno de erros</h2><p class="muted">Questões respondidas incorretamente ficam aqui para revisão.</p></div><button class="secondary" id="clear-errors">Limpar caderno</button></div>
       <div id="error-list" class="question-list"></div>
+    </section>
+
+    <section class="view" id="view-planos">
+      <div class="section-heading"><div><p class="eyebrow">ESTUDE DO SEU JEITO</p><h2>Planos acessíveis para sua aprovação</h2><p class="muted">Comece pagando pouco e evolua quando precisar de mais recursos.</p></div></div>
+      <div class="pricing-note"><strong>Preço de lançamento sugerido</strong><span>Valores propostos para testar o mercado. A cobrança ainda não está ativada.</span></div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <div class="price-top"><span class="price-icon">✦</span><span class="plan-label">ESSENCIAL</span></div>
+          <h3>Plano Essencial</h3><p class="price-desc">Para começar a praticar todos os dias.</p>
+          <div class="price"><strong>R$ 7,90</strong><span>/ mês</span></div>
+          <ul><li>Banco de questões disponível no plano</li><li>Correção automática e comentários</li><li>Caderno de erros</li><li>Resumo do desempenho</li></ul>
+          <button class="price-button" data-plan="Essencial">Escolher Essencial</button>
+        </article>
+        <article class="price-card featured">
+          <div class="popular">MELHOR CUSTO-BENEFÍCIO</div>
+          <div class="price-top"><span class="price-icon">◆</span><span class="plan-label">PLUS</span></div>
+          <h3>Plano Plus</h3><p class="price-desc">Para quem quer estudar com mais direção.</p>
+          <div class="price"><strong>R$ 12,90</strong><span>/ mês</span></div>
+          <ul><li>Tudo do Essencial</li><li>Plano de estudos personalizado</li><li>Filtros por disciplina e dificuldade</li><li>Relatórios de desempenho por matéria</li></ul>
+          <button class="price-button" data-plan="Plus">Escolher Plus</button>
+        </article>
+        <article class="price-card">
+          <div class="price-top"><span class="price-icon">✧</span><span class="plan-label">PREMIUM</span></div>
+          <h3>Plano Premium</h3><p class="price-desc">Para uma preparação mais guiada.</p>
+          <div class="price"><strong>R$ 18,90</strong><span>/ mês</span></div>
+          <ul><li>Tudo do Plus</li><li>Simulados personalizados</li><li>Revisões recomendadas</li><li>Professor IA quando estiver integrado</li></ul>
+          <button class="price-button" data-plan="Premium">Escolher Premium</button>
+        </article>
+      </div>
+      <p class="pricing-disclaimer">Os recursos avançados e o Professor IA ainda precisam ser desenvolvidos. Os botões são demonstrativos: nenhuma assinatura ou cobrança será realizada nesta versão.</p>
     </section>
 
     <footer>© <span id="year"></span> Aprova Inteligente <span>•</span> Continue avançando, uma questão por vez.</footer>
