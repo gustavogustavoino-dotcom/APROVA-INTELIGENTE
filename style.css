@@ -7,3 +7,133 @@
 /* Pricing plans */
 .pricing-note{display:flex;flex-direction:column;gap:5px;padding:14px 17px;border:1px solid #dce5ff;background:#f0f4ff;border-radius:12px;margin-bottom:18px}.pricing-note strong{font-size:12px;color:#2f4bc0}.pricing-note span{font-size:11px;color:#6d7890}.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:stretch}.price-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column}.price-card.featured{border:2px solid #6179f4;transform:translateY(-4px)}.popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#4263eb;color:#fff;border-radius:30px;padding:6px 10px;font-size:8px;font-weight:800;letter-spacing:.8px}.price-top{display:flex;align-items:center;gap:9px;margin-bottom:17px}.price-icon{display:grid;place-items:center;width:35px;height:35px;background:#edf1ff;color:#4263eb;border-radius:11px;font-size:17px}.plan-label{font-size:9px;font-weight:800;letter-spacing:1.5px;color:#8793a7}.price-card h3{font:800 18px Manrope,sans-serif;margin:0 0 7px}.price-desc{font-size:11px;line-height:1.6;color:var(--muted);min-height:35px;margin:0 0 18px}.price{display:flex;align-items:baseline;gap:6px;padding-bottom:18px;border-bottom:1px solid var(--line)}.price strong{font:800 30px Manrope,sans-serif;letter-spacing:-1px}.price span{font-size:11px;color:var(--muted)}.price-card ul{list-style:none;margin:18px 0 22px;padding:0;display:grid;gap:12px;flex:1}.price-card li{font-size:11px;color:#59667d;line-height:1.5}.price-card li:before{content:"✓";color:#15966a;font-weight:800;margin-right:9px}.price-button{width:100%;border:1px solid #4263eb;background:#fff;color:#3654d8;border-radius:10px;padding:12px;font-weight:800;font-size:11px}.featured .price-button{background:#4263eb;color:#fff}.pricing-disclaimer{font-size:10px;line-height:1.7;color:#8793a7;margin-top:17px}.nav-btn[data-view="planos"]{margin-top:8px}
 @media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.price-card.featured{transform:none}.price-desc{min-height:0}}
+/* ===== PLANOS APROVA INTELIGENTE ===== */
+
+.planos-section {
+  padding: 55px 20px;
+  margin-top: 35px;
+}
+
+.planos-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
+
+.planos-tag {
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.planos-header h2 {
+  font-size: 30px;
+  margin: 12px 0;
+  color: #172554;
+}
+
+.planos-header p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.planos-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.plano-card {
+  background: #ffffff;
+  border: 1px solid #dbe4f0;
+  border-radius: 18px;
+  padding: 30px 24px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.plano-card h3 {
+  color: #172554;
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.plano-descricao {
+  color: #64748b;
+  font-size: 14px;
+  min-height: 40px;
+}
+
+.plano-preco {
+  color: #2563eb;
+  font-size: 30px;
+  font-weight: 800;
+  margin: 22px 0;
+}
+
+.plano-preco small {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.plano-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.plano-card li {
+  color: #475569;
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.plano-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plano-card button:hover {
+  background: #1d4ed8;
+}
+
+.plano-destaque {
+  border: 2px solid #2563eb;
+  transform: translateY(-8px);
+}
+
+.plano-popular {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 800px) {
+  .planos-container {
+    grid-template-columns: 1fr;
+  }
+
+  .plano-destaque {
+    transform: none;
+  }
+
+  .planos-header h2 {
+    font-size: 24px;
+  }
+}
